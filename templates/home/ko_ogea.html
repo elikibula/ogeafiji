@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Naiculaga Village - Ogea{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <!-- Section 1: Hero Section -->
+    <section id="hero" class="d-flex align-items-center justify-content-center text-center text-white" style="height: 100vh">
+        <div class="container mb-2">
+            <h1 class="embossed-text">
+                KO OGEA
+            </h1>
+            <h2 class="lead">"Matuatabu i Tui Nayau, na Turaga na Tui Ogea"</h2><br>
+            <p>A neitou Yavusa ko Ogea ka neitou koro ko Naiculaga</p>
+            <p>A neitou kacu na "Vesi", ka neitou ika na "Kanace", ka neitou manumanu na "Kaisevau". E wili kina jikina ko Vulaga ko Ogea, ka odrai jikojiko vakaturaga a Turaga a Tui Ogea.</p>
+            <p>Ena loma ni Yavusa vakaturaga, e dua ga na kena Mataqali ka vakatokai me ko Mataqali Natubesara ka tolu na kenai Tokatoka. 1. Tokatoka Natubesara 2. Tokatoka Mata 3. Tokatoka Tu-tu. E dau buli na Turaga na Tui Ogea mai nai Tokatoka Natubesara, ka dau buli na Turaga na Vaka-ni-vanua mai nai Tokatoka Mata ka dau buli na Takala-ni-vanua mai nai Tokatoka Tu-tu.</p>
+            <p>Sa macala vinaka tu na neitou vanua, keitou teitei veicurumaki ga ena loma ni rua neitou yanuyanu ko Ogea Levu kei Ogea Driki. Sa sega ni wasei vakamataqali na neitou vanua ka sa tu levu tu ga vei keitou; ka sa dui macala tu ga vei keitou na keitou tiki ni qele yadua.</p>
+        </div>
+    </section>
+    
+    <section class="py-3">
+        <div class="container">
+            <div class="row">
+                <!-- Tokatoka Tubesara -->
+                <div class="col-md-4">
+                    <div class="flip-card shadow-lg"> <!-- Added shadow-lg for bottom shadow -->
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'assets/vesi.png' %}" alt="Weitou kacu a Vesi" class="card-img-top"> 
+                            </div>
+                            <div class="flip-card-back d-flex align-items-center justify-content-center">
+                                <h3>Weitou kacu a Vesi</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <!-- Tokatoka Mata -->
+                <div class="col-md-4">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'assets/ika.png' %}" alt="Weitou ika a Kanace" class="img-fluid">
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Weitou ika a Kanace</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Tokatoka Tutu -->
+                <div class="col-md-4">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'assets/ogeaflycatcher.jpg' %}" alt="Weitou manumanu a Kaisevau" class="img-fluid">
+                            </div>
+                            <div class="flip-card-back">
+                                <h3>Weitou manumanu a Kaisevau</h3>
+                                <p>Ogean Mornach</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="embossed-text">About Ogea Island</h2>
+            <p>Ogea Levu (pronounced [oˈŋea ˈleβu]) is a coral island on a barrier reef in Fiji's Southern Lau archipelago. With an area of 13.3 square kilometres (3,300 acres), it is situated at 19.18° South and 178.47° West, 10 kilometres (6.2 miles) east of Fulaga. It has a maximum altitude of 82 metres (270 ft).</p>
+            <p>A 1,830 hectares (4,500 acres) area covering both Ogea Levu and nearby Ogea Driki is the Ogea Important Bird Area. The Important Bird Area covers the entire range of the near threatened Ogea monarch.[1] The makatea forest and Ogea monarch habitat of the island contribute to its national significance as outlined in Fiji's Biodiversity Strategy and Action Plan.[2]</p>
+            <p>The people of Ogea are known for their happy and carefree approach to life, yet they also work hard in their daily lives, mainly in planting root crops, and fishing in their rich fishing grounds around both their islands which are surrounded by magnificent reefs and coral atolls. The chief of Ogea is traditionally known as the Matua Tabu i Tui Nayau, Tui Ogea (Sacred Elder of the Tui Nayau, the Tui Ogea). From the <a href="https://en.wikipedia.org/wiki/Ogea_Levu" target="_blank" style="color: #ff6600;">Wikipedia</a> </p>
+        </div>
+    </section> 
+
+    <section id="yacanivanua" class="d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="embossed-text">
+                        Yaca ni Cakau, Baravi kei  na vei Delaniyavu
+                    </h1>
+                </div>
+                <div class="col-md-12 col-12 mb-4">
+                    <div class="card shadow-lg full-image-card">
+                        <img src="{% static 'assets/cakau.jpg' %}" class="card-img-top img-fluid" alt="Cakau Image"
+                            data-bs-toggle="modal" data-bs-target="#imageModal">
+                    </div>
+                </div>
+                
+                <div class="col-md-12 col-12 mb-4">
+                    <div class="card shadow-lg full-image-card">
+                        <img src="{% static 'assets/veibaravi.jpg' %}" class="card-img-top img-fluid" alt="Veibaravi Image"
+                            data-bs-toggle="modal" data-bs-target="#imageModal">
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-12 mb-4">
+                    <div class="card shadow-lg full-image-card">
+                        <img src="{% static 'assets/nakoro.jpg' %}" class="card-img-top img-fluid" alt="Veibaravi Image"
+                            data-bs-toggle="modal" data-bs-target="#imageModal">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="yaca_buli" class="d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <h1 class="embossed-text">
+                Ko iratou a Yaca Buli
+            </h1>
+    
+            <!-- Row 1: Heading + Cards 1 & 2 -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="embossed-text">Tui Ogea</h2>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/tua_maciu.png' %}" class="card-img-top img-fluid" alt="Maciu Yabaki">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Maciu Yabaki</h5>
+                            <p class="card-text text-dark">2007-2013</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Maciu Yabaki">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Jone Loma</h5>
+                            <p class="card-text text-dark">2007-2013</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/tua_sili.png' %}" class="card-img-top img-fluid" alt="Mr. Sili Cabe">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Sili Cabe</h5>
+                            <p class="card-text text-dark">2020 me yacova mai nikua</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Row 2: Heading + Cards 3 & 4 -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="embossed-text">Takala-ni-Vanua</h2>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card shadow-lg">
+                        <img src="{% static 'assets/tuatale.png' %}" class="card-img-top img-fluid" alt="Feature Three">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Saini Tale Bula</h5>
+                            <p class="card-text text-dark">2007 - 2009</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/tuajimi.png' %}" class="card-img-top img-fluid" alt="Maciu Yabaki">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Jimilai Koto</h5>
+                            <p class="card-text text-dark">2007-2013</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/tuajiko.png' %}" class="card-img-top img-fluid" alt="Feature Four">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Tevita Tikotani</h5>
+                            <p class="card-text text-dark">2020 me yacova nikua</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Row 3: Heading + Cards 5 & 6 -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="embossed-text">Vaka-ni-Vanua</h>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Feature Five">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Sukulu Soko</h5>
+                            <p class="card-text text-dark">2007 - 2009</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/tagilala.png' %}" class="card-img-top img-fluid" alt="Feature Six">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Tagilala Qalo</h5>
+                            <p class="card-text text-dark">2014 - 2021</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Feature Six">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">????</h5>
+                            <p class="card-text text-dark">2022 - 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row 3: Heading + Cards 7 & 8-->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="embossed-text">Mata-ki-Lakeba</h>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Feature Five">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Ledua Jiko</h5>
+                            <p class="card-text text-dark">2007 - 2009</p>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <!-- Row 3: Heading + Cards 7 & 8-->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="embossed-text">Tui-Ra</h>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Feature Five">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Samuela Tawakilai</h5>
+                            <p class="card-text text-dark">2007 - 2009</p>
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Feature Five">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Kali Veitokiyaki</h5>
+                            <p class="card-text text-dark">2007 - 2009</p>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+            <!-- Row 3: Heading + Cards 7 & 8-->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="embossed-text">Gonedau</h>
+                </div>
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Feature Five">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Jimilai Koto</h5>
+                            <p class="card-text text-dark">2007 - 2009</p>
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-md-4 col-12 mb-4">
+                    <div class="card h-100 shadow-lg">
+                        <img src="{% static 'assets/unknown.png' %}" class="card-img-top img-fluid" alt="Feature Five">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-dark">Mr. Cati Tuiyawa</h5>
+                            <p class="card-text text-dark">2007 - 2009</p>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </section>  
+</div>
+{% endblock %}

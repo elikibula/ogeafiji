@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    .news-article-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: 0.25rem;
+        margin-bottom: 1.5rem;
+    }
+    .news-article-image, .news-article-video {
+        width: 100%;
+        border-top-left-radius: calc(0.25rem - 1px);
+        border-top-right-radius: calc(0.25rem - 1px);
+    }
+    .news-article-body {
+        padding: 1.25rem;
+    }
+    .news-article-title {
+        margin-bottom: 0.75rem;
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+    .news-article-meta {
+        color: #6c757d;
+        font-size: 0.875rem;
+    }
+    .news-article-content {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-top: 1rem;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Main Content (News Details) -->
+        <div class="col-md-8">
+            <div class="news-article-card mb-4">
+                {% if news.video %}
+                    <video class="news-article-video" controls>
+                        <source src="{{ news.video.url }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% elif news.image %}
+                    <img src="{{ news.image.url }}" class="news-article-image" alt="{{ news.title }}">
+                {% endif %}
+                <div class="news-article-body">
+                    <h1 class="news-article-title">{{ news.title }}</h1>
+                    <p class="news-article-meta">Category: {{ news.category.name }} | Posted on {{ news.date_posted }}</p>
+                    <hr>
+                    <div class="news-article-content">{{ news.content|safe }}</div>
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3 class="card-title">Comments ({{ comments.count }})</h3>
+                    {% if comments %}
+                        {% for comment in comments %}
+                            <div class="border-bottom pb-2 mb-3">
+                                <strong>{{ comment.author }}</strong>
+                                <small class="text-muted">on {{ comment.date_posted }}</small>
+                                <p class="mt-2">{{ comment.content }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="text-muted">No comments yet. Be the first to comment!</p>
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                        <h4 class="mt-4">Add a Comment</h4>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    {% else %}
+                        <p><a href="#" class="btn btn-outline-primary">Log in</a> to leave a comment.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar (All News List) -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-dark text-center">
+                    <a href="{% url 'news_list' %}" class="text-decoration-none">
+                        <h4 class="text-light">Ai Talanoa</h4>
+                    </a>  
+                </div>
+                <div class="card-body">
+                    <!-- Search Bar -->
+                    <form method="GET" action="{% url 'news_list' %}" class="mb-3">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control" placeholder="Search news..." aria-label="Search news">
+                            <button class="btn btn-outline-secondary" type="submit">🔍</button>
+                        </div>
+                    </form>
+        
+                    <!-- Featured News -->
+                    {% with featured_news=all_news|first %}
+                        {% if featured_news %}
+                            <div class="mb-3 p-2 border rounded {% if news.slug == featured_news.slug %}bg-primary text-white{% else %}bg-light{% endif %}">
+                                <h5>
+                                    <a href="{% url 'news_detail' slug=featured_news.slug %}" 
+                                       class="text-decoration-none {% if news.slug == featured_news.slug %}text-white{% endif %}">
+                                        {{ featured_news.title }}
+                                    </a>
+                                </h5>
+                                <small class="{% if news.slug == featured_news.slug %}text-white-50{% else %}text-muted{% endif %}">
+                                    Posted on {{ featured_news.date_posted }}
+                                </small>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+        
+                    <!-- News List -->
+                    <div class="list-group">
+                        {% for news_item in all_news|slice:"1:" %}
+                            <a href="{% url 'news_detail' slug=news_item.slug %}" 
+                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center {% if news.slug == news_item.slug %}active bg-primary border-primary{% endif %}">
+                                {{ news_item.title }}
+                                <small class="{% if news.slug == news_item.slug %}text-white-50{% else %}text-muted{% endif %}">
+                                    {{ news_item.date_posted|date:"M d" }}
+                                </small>
+                            </a>
+                        {% empty %}
+                            <p class="text-muted text-center">No news available.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>       
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.list-group-item').forEach(item => {
+            if (item.getAttribute('href') === currentPath) {
+                item.classList.add('active', 'border-primary');
+                item.style.backgroundColor = '#ff6600';
+                item.style.color = '#ffffff'; // Ensure text is readable
+                const smallText = item.querySelector('small');
+                if (smallText) {
+                    smallText.classList.add('text-white-50');
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

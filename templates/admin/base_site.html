@@ -1,0 +1,33 @@
+{% extends "admin/base.html" %}
+
+{% load static %}  <!-- Add this line to load static files -->
+
+{% block title %}
+{% if subtitle %}
+  {{ subtitle }} | 
+{% endif %}
+{{ title }} | {{ site_title|default:_('Django site admin') }}
+{% endblock %}
+
+{% block branding %}
+<div id="branding">
+  <a href="/">
+    <img src="{% static 'assets/Logo.png' %}" alt="Logo" />
+  </a>
+</div>
+{% include "admin/color_theme_toggle.html" %}
+
+<!-- Adding the CSS to customize the logo -->
+<style>
+  #branding img {
+    max-width: 200px;  /* Adjust the logo width */
+    margin: 20px 0;     /* Adds space around the logo */
+    display: block;     /* Ensures the logo is displayed as a block element */
+    margin-left: auto;  /* Centers the logo horizontally */
+    margin-right: auto; /* Centers the logo horizontally */
+  }
+</style>
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

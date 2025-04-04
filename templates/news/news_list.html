@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="display-5 fw-bold text-uppercase embossed-text text-shadow underline-heading custom-heading text-center">
+        Ai Talanoa
+    </h2>
+
+    {% if news_list %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for news in news_list %}
+                <div class="col">
+                    <a href="{% url 'news_detail' slug=news.slug %}" class="text-decoration-none">
+                        <div class="card shadow-sm border-0 h-100 news-card">
+                            {% if news.image %}
+                                <img src="{{ news.image.url }}" class="card-img-top news-thumbnail" alt="{{ news.title }}">
+                            {% endif %}
+                            <div class="card-body d-flex flex-column">
+                                <h6 class="card-title text-dark fw-bold">{{ news.title|truncatechars:50 }}</h6>
+                                <p class="text-muted small">
+                                    📅 {{ news.date_posted|date:"M d, Y" }} | 🏷️ {{ news.category.name }}
+                                </p>
+                                <p class="card-text flex-grow-1 small">{{ news.content|truncatewords:20 }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-muted text-center mt-4">No news available.</p>
+    {% endif %}
+</div>
+
+<style>
+    .news-thumbnail {
+        height: 160px;
+        object-fit: cover;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+
+    .news-card {
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        padding-bottom: 10px;
+    }
+
+    .news-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+        .news-thumbnail {
+            height: 140px;
+        }
+    }
+</style>
+
+{% endblock %}

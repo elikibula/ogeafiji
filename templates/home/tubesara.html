@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Naiculaga Village - Ogea{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <section id="hero" class="d-flex align-items-center justify-content-center text-center text-white" style="height: 100vh">
+        <div class="container">
+            <h1 class="embossed-text">Tokatoka Natubesara</h1>
+            <h2 class="lead">"Ai Tokatoka Turaga, a odra i Tokatoka a Tui Ogea"</h2><br>
+            <p>Kaiei a odratou i Tokatoka a Turaga ka ratou lewe lima a vuvale eratou lewena ai Tokatoka kaiei.</p>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="embossed-text">Vuvale ena loma ni Tokatoka</h2>
+            <div class="row justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-md-2 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg text-center">
+                            <img src="{% static 'assets/card1.jpg' %}" class="card-img-top img-fluid custom-img" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Topetau</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-2 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg text-center">
+                            <img src="{% static 'assets/tua_maciu.png' %}" class="card-img-top img-fluid custom-img" alt="Card 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Nukunawa</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-2 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg text-center">
+                            <img src="{% static 'assets/tua_sili.png' %}" class="card-img-top img-fluid custom-img" alt="Card 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Mataikamali</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-2 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg text-center">
+                            <img src="{% static 'assets/card4.jpg' %}" class="card-img-top img-fluid custom-img" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Qaraniqio</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-md-2 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg text-center">
+                            <img src="{% static 'assets/' %}" class="card-img-top img-fluid custom-img" alt="">
+                            <div class="card-body">
+                                <h5 class="card-title">Davuilevu</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .custom-card {
+        position: relative;
+        height: 200px; /* Adjust height if needed */
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .custom-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay effect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px black;
+    }
+
+    .embossed-text {
+        color: #ff6600;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+</style>
+
+{% endblock %}
+

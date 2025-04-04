@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Naiculaga Village - Ogea{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <section id="hero" class="d-flex align-items-center justify-content-center text-center text-white" style="height: 100vh">
+        <div class="container">
+            <h1 class="embossed-text">Tokatoka Mata</h1>
+            <h2 class="lead">"Ai odra i Tokatoka a Turaga Vaka ni Vanua"</h2><br>
+            <p>Me na qai vakaleweni yani i nai tukutuku me baleta a Tokatoka iei kei ira ona kawa.</p>
+        </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="embossed-text">A Vuvale ena loma ni Tokatoka</h2>
+            <div class="row justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg">
+                            <img src="{% static 'assets/card1.jpg' %}" class="card-img img-fluid custom-img" alt="Takea">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Takea</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg">
+                            <img src="{% static 'assets/card2.jpg' %}" class="card-img img-fluid custom-img" alt="Mana">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Mana</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg">
+                            <img src="{% static 'assets/card3.jpg' %}" class="card-img img-fluid custom-img" alt="Dakuilomaloma">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Dakuilomaloma</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <a href="#" class="text-decoration-none">
+                        <div class="card custom-card shadow-lg">
+                            <img src="{% static 'assets/card4.jpg' %}" class="card-img img-fluid custom-img" alt="Qanileka">
+                            <div class="card-overlay">
+                                <h5 class="card-title">Qanileka</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Custom CSS -->
+<style>
+    .custom-card {
+        position: relative;
+        height: 150px; /* Adjust height if needed */
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .custom-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay effect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px black;
+    }
+
+
+</style>
+
+{% endblock %}

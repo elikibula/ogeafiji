@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-4">
+    <div class="container">
+        <!-- Shop Heading at the Top -->
+        <div class="text-center mb-1">
+            <h1 class="fw-bold text-uppercase" style="color: #ff6600;">Welcome to Our Village Shop</h1>
+        </div>
+        <div class="row">
+            <!-- Products Listing -->
+            <div class="col-md-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    {% if category %}
+                    <a href="{% url 'shop:product_list' %}" class="btn text-dark" style="background-color: #ff6600; border-color: #ff6600;">
+                        <i class="fas fa-arrow-left me-1"></i> Back to Shop
+                    </a>
+                    {% endif %}
+                </div>
+                
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <a href="{% url 'shop:product_detail' product.id product.slug %}" class="text-decoration-none text-dark">
+                            <div class="card h-100 border-0 shadow-sm hover-effect">
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                                {% endif %}
+                                
+                                <!-- Stock badge -->
+                                {% if product.stock > 0 %}
+                                <div class="position-absolute top-0 end-0 m-2">
+                                    <span class="badge 
+                                        {% if product.stock < product.stock_threshold %}bg-warning text-dark
+                                        {% else %}bg-success{% endif %}">
+                                        {% if product.stock < product.stock_threshold %}
+                                            Low Stock ({{ product.stock }} left)
+                                        {% else %}
+                                            In Stock ({{ product.stock }})
+                                        {% endif %}
+                                    </span>
+                                </div>
+                                {% else %}
+                                <div class="position-absolute top-0 end-0 m-2">
+                                    <span class="badge bg-danger">Out of Stock</span>
+                                </div>
+                                {% endif %}
+                                
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <h6 class="text-primary">${{ product.price }}</h6>
+                                    <p class="card-text text-muted">{{ product.description|truncatechars:100 }}</p>
+                                    
+                                    <!-- Stock status text -->
+                                    <div class="mt-2">
+                                        {% if product.stock == 0 %}
+                                        <p class="text-danger mb-0"><i class="fas fa-times-circle"></i> Currently unavailable</p>
+                                        {% elif product.stock < product.stock_threshold %}
+                                        <p class="text-warning mb-0"><i class="fas fa-exclamation-triangle"></i> Only {{ product.stock }} left!</p>
+                                        {% else %}
+                                        <p class="text-success mb-0"><i class="fas fa-check-circle"></i> Available ({{ product.stock }}+ in stock)</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% empty %}
+                    <div class="col-12">
+                        <div class="alert alert-info">No products available in this category.</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Categories Sidebar -->
+            <div class="col-md-3 mt-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h4>Categories</h4>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="{% url 'shop:product_list' %}" 
+                        class="list-group-item list-group-item-action {% if not category %}active{% endif %}">
+                            All Categories
+                        </a>
+                        {% for c in categories %}
+                        <a href="{% url 'shop:product_list_by_category' c.slug %}" 
+                        class="list-group-item list-group-item-action {% if category.slug == c.slug %}active{% endif %}">
+                            {{ c.name }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Hover effect for cards */
+    .hover-effect {
+        transition: all 0.3s ease;
+    }
+    .hover-effect:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    }
+    /* Ensure links don't have underline */
+    .card-link {
+        text-decoration: none !important;
+    }
+</style>
+{% endblock %}
